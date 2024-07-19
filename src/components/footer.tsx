@@ -15,7 +15,7 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4}>
+        <Grid container spacing={5}>
           <Grid item xs={12} sm={3}>
             <img
               src={logo}
@@ -23,12 +23,15 @@ const Footer = () => {
               style={{ maxWidth: 150 }}
             />
           </Grid>
+          
           <Grid item xs={12} sm={3}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              Company Name
+              Addres:
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              © 2024 Company Name. All rights reserved.
+                  Walkowski Place NW
+                  Edmonton, Alberta
+                  Canada
             </Typography>
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -66,8 +69,18 @@ const Footer = () => {
             </Link>
           </Grid>
         </Grid>
+        <Grid item xs={12} sm={3}>
+            <Typography variant="h6" color="text.primary" gutterBottom>
+              Everything Ai 
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              © 2024 Everything Ai. All rights reserved.
+            </Typography>
+          </Grid>
       </Container>
     </Box>
+
+
   );
 };
 
