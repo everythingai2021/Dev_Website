@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography, Button, Container } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import ServiceImage1 from "../assets/imageframe3.jpg";
+import ServiceImage1 from "../assets/homepage.jpg";
 
 
 const services = [
@@ -34,17 +34,15 @@ const WhatWeDo: React.FC = () => {
       mb: 5,
     }}
   >
-    <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
-      What We Do
+    <Typography
+      variant="h5"
+      gutterBottom
+      sx={{ fontWeight: "bold", color: "#1976d2", textAlign: 'center' }}
+      >
+      What we Offer?
     </Typography>
-    <Box
-      sx={{
-        width: '180px',
-        height: '4px',
-        bgcolor: '#77B3DF',
-        borderRadius: 2,
-      }}
-    />
+    
+    
   </Box>
   <Grid container spacing={2}>
     {services.map((service, index) => (

@@ -4,6 +4,7 @@ import Sponsor from "../components/ourSponsor";
 import ContactSection from "../components/contactpage";
 import ProgramDropBox from "../components/ProgramDrop";
 import Process from "../components/Process";
+import TestimonialSection from "../components/Testimonial";
 
 const Program: React.FC = () => {
   return (
@@ -138,9 +139,8 @@ const Program: React.FC = () => {
               ]}
               buttonLabel="Register Now"
               />    
-              <Process/>
-
-          
+            <Process/>
+            <TestimonialSection />
             <Sponsor />
             <ContactSection />
           </Container>

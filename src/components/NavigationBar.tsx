@@ -9,13 +9,13 @@ import {
   Drawer,
   Button,
   Menu,
-
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import logo from "../assets/EAI.png";
 import ContactButton from "./ContactButton";
-import { Link as RouterLink, useLocation } from "react-router-dom";
 
 interface NavButtonProps {
   to: string;
@@ -50,34 +50,30 @@ const NavButton: React.FC<NavButtonProps> = ({
   </Button>
 );
 
-const NavButtons: React.FC<{
+interface NavButtonsProps {
   onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
-}> = ({ onMouseEnter }) => (
+}
+
+const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
   <>
     <NavButton to="/" primary="Home" />
     <NavButton to="/whoweare" primary="Who We Are" />
     <NavButton to="/events" primary="Events" />
-    <NavButton
-      to="/project"
-      primary="Projects"
-      hasDropdown
-      onMouseEnter={onMouseEnter}
-    />
+    <NavButton to="/project" primary="Projects" hasDropdown onMouseEnter={onMouseEnter} />
     <NavButton to="/program" primary="Program" />
     <NavButton to="/careers" primary="Careers" />
+    <NavButton to="/Contact" primary="Contact" />
   </>
 );
 
 const NavigationBar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(
-    null
-  );
+  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
   const isMobile = useMediaQuery("(max-width:600px)");
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top on route change
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   const toggleDrawer =
@@ -104,37 +100,19 @@ const NavigationBar: React.FC = () => {
   };
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{ backgroundColor: "#fff", color: "#247B27" }}
-    >
+    <AppBar position="sticky" sx={{ backgroundColor: "#fff", color: "#247B27" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h4" component="div" sx={{ marginLeft: "10px" }}>
-          <RouterLink to="/" className="navbar-brand">
-            <img
-              src={logo}
-              alt="Logo"
-              className="logo-img"
-              style={{ height: '50px', margin: '6px' }} 
-            />
+          <RouterLink to="/">
+            <img src={logo} alt="Logo" style={{ height: "50px", margin: "6px" }} />
           </RouterLink>
         </Typography>
-
         {isMobile ? (
           <>
-            <IconButton
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-              edge="end"
-            >
+            <IconButton color="inherit" aria-label="menu" onClick={toggleDrawer(true)} edge="end">
               <MenuIcon />
             </IconButton>
-            <Drawer
-              anchor="right"
-              open={drawerOpen}
-              onClose={toggleDrawer(false)}
-            >
+            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
               <Box
                 sx={{
                   width: 250,
@@ -154,20 +132,12 @@ const NavigationBar: React.FC = () => {
             </Drawer>
           </>
         ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1.5rem",
-              marginRight: "20px",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", gap: "1.5rem", marginRight: "20px" }}>
             <NavButtons onMouseEnter={handleServicesHover} />
             <ContactButton />
           </Box>
         )}
       </Toolbar>
-
       <Menu
         anchorEl={servicesAnchorEl}
         open={Boolean(servicesAnchorEl)}
@@ -182,9 +152,9 @@ const NavigationBar: React.FC = () => {
           horizontal: "left",
         }}
       >
-        {/* <MenuItem
+        <MenuItem
           component={RouterLink}
-          to="/services"
+          to="/project-2020"
           onClick={handleServicesClose}
           sx={{
             color: "#247B27",
@@ -196,10 +166,24 @@ const NavigationBar: React.FC = () => {
             },
           }}
         >
-          Tower Repair and Maintenance
-        </MenuItem> */}
-        
-        {/* Add other menu items as needed */}
+          2020 Project Section
+        </MenuItem>
+        <MenuItem
+          component={RouterLink}
+          to="/project-2022"
+          onClick={handleServicesClose}
+          sx={{
+            color: "#247B27",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: "rgba(36, 123, 39, 0.08)",
+            },
+          }}
+        >
+          2022 Project Section
+        </MenuItem>
       </Menu>
     </AppBar>
   );

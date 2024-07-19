@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import ContactForm from "../assets/ContactForm";
-
+import ContactForm from "./ContactForm";
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 const ContactButton: React.FC = () => {
   const [showContactForm, setShowContactForm] = useState(false);
 
@@ -12,27 +12,12 @@ const ContactButton: React.FC = () => {
     <>
       <Button
         variant="contained"
-        color="success"
+        color="primary"
         onClick={handleShow}
-        sx={{
-          minWidth: 0,
-          padding: "6px 16px",
-          margin: "0 8px",
-          borderRadius: "8px",
-          fontSize: "1rem",
-          textTransform: "none",
-          display: "inline-flex",
-          flexShrink: 0,
-          background: "#1339BE",
-          "&:hover": {
-            backgroundColor: "#fffbf1",
-            color: "black",
-          },
-        }}
       >
-        Contact Us
+        <ConnectWithoutContactIcon/>
       </Button>
-
+    
       <ContactForm open={showContactForm} handleClose={handleClose} />
     </>
   );

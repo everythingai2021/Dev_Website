@@ -1,7 +1,7 @@
 import React from "react";
 import EachFuc from "../components/Eachpage";
 import CareerPage from '../components/Career';
-import Page from "../assets/goalsimg.jpg";
+import Page from "../assets/careerimg.jpg";
 import Sponsor from "../components/ourSponsor";
 const jobs = [
     {

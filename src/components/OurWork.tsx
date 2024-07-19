@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
-import WorkImage from "../assets/ourwork.jpg"; // Replace with your actual image path
+import WorkImage from "../assets/kids1.jpg"; // Replace with your actual image path
 
 const OurWork: React.FC = () => {
   return (
