@@ -62,6 +62,7 @@ const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
     <NavButton to="/project" primary="Projects" hasDropdown onMouseEnter={onMouseEnter} />
     <NavButton to="/program" primary="Program" />
     <NavButton to="/careers" primary="Careers" />
+    <NavButton to="/Sandbox" primary="Sandbox - Compiler " />
     <NavButton to="/Contact" primary="Contact" />
   </>
 );

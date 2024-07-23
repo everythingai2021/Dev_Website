@@ -11,6 +11,10 @@ import Footer from "./components/footer";
 import ProjectPage2020 from "./pages/Project2020";
 import ProjectPage2022 from "./pages/Project2022";
 import EventPage from "./pages/Events";
+import SandboxGlobal from "./pages/SandboxGlobal";
+import Sandbox1 from "./pages/Sandbox1";
+import Sandbox2 from "./pages/Sandbox2";
+import Sandbox3 from "./pages/Sandbox3";
 const App: React.FC = () => {
   return (
     <Router>
@@ -28,6 +32,10 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/project-2020" element={<ProjectPage2020/>} />
           <Route path="/project-2022" element={<ProjectPage2022 />} />
+          <Route path="/Sandbox" element={<SandboxGlobal />} />
+          <Route path="/Sandbox1" element={<Sandbox1 />} />
+          <Route path="/Sandbox2" element={<Sandbox2 />} />
+          <Route path="/Sandbox3" element={<Sandbox3 />} />
         </Routes>
 
         <Footer/>
