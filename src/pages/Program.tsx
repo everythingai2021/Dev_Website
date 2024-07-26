@@ -5,10 +5,13 @@ import ContactSection from "../components/contactpage";
 import ProgramDropBox from "../components/ProgramDrop";
 import Process from "../components/Process";
 import TestimonialSection from "../components/Testimonial";
-
+import MetaData from "../components/Metadata";
 const Program: React.FC = () => {
   return (
-    <>
+    <div>
+    <MetaData title="Programs | SandBox" description="Welcome to EverythingAI Home" />
+  
+    
       <React.Fragment>
         <CssBaseline />
         <Container fixed>
@@ -146,7 +149,7 @@ const Program: React.FC = () => {
           </Container>
         </Box>
       </React.Fragment>
-    </>
+    </div>
   );
 };
 

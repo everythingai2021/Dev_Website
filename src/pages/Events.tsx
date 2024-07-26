@@ -2,9 +2,13 @@ import React from 'react';
 import { Container, Grid, Box, Typography, Card, CardMedia } from '@mui/material';
 import image1 from "../assets/soccer.jpeg"
 import image2 from "../assets/baseball.jpeg"
-
+import MetaData from '../components/Metadata';
 const EventPage: React.FC = () => {
   return (
+    <div>
+    <MetaData title="Events | SandBox" description="Welcome to EverythingAI Home" />
+  
+    
     <Container component="main" maxWidth="lg" sx={{ py: 5 }}>
       <Box sx={{ mb: 4 }}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
@@ -73,6 +77,7 @@ const EventPage: React.FC = () => {
       </Grid>
      
     </Container>
+    </div>
   );
 };
 

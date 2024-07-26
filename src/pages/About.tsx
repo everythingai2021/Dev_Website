@@ -1,13 +1,15 @@
-import React, { Fragment } from "react";
+
 import { Box, Typography, Button, Container } from "@mui/material";
 import Sponsor from "../components/ourSponsor";
 import ContactSection from "../components/contactpage";
 import WhatWeDo from "../components/whatwedo";
 import Process from "../components/Process";
-
+import MetaData from "../components/Metadata";
 const AboutPage: React.FC = () => {
   return (
-    <Fragment>
+    <div>
+    <MetaData title="Who we are | SandBox" description="Welcome to EverythingAI Home" />
+  
       <Container sx={{ mt: 5 }}>
         <Typography
           variant="h4"
@@ -69,7 +71,7 @@ const AboutPage: React.FC = () => {
         <ContactSection />
         <Sponsor />
       </Container>
-    </Fragment>
+    </div>
   );
 };
 

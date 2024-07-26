@@ -14,7 +14,7 @@ import theme from "../components/Theme";
 import emailjs from "emailjs-com";
 import EachPage from "../components/Eachpage";
 import page from "../assets/contact.jpg"
-
+import MetaData from "../components/Metadata";
 const ContactPage: React.FC = () => {
 
   const handleSubmitContactForm = (event: React.FormEvent<HTMLFormElement>) => {
@@ -40,7 +40,9 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <>
+    <div>
+    <MetaData title="Contact | SandBox" description="Welcome to EverythingAI Home" />
+  
     
         <EachPage
         Title=""
@@ -178,7 +180,7 @@ const ContactPage: React.FC = () => {
 
       
   
-    </>
+    </div>
   );
 };
 

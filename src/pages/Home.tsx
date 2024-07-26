@@ -7,9 +7,14 @@ import Sponsor from "../components/ourSponsor";
 import  ImgMediaCard from  "../components/Cards";
 import TestimonialSection from "../components/Testimonial";
 import Grid from '@mui/material/Grid';
+import MetaData from "../components/Metadata";
 const Homepage: React.FC = () => {
   return (
-    <>
+    <div>
+    <MetaData title="Home | EverythingAI-SandBox" description="Welcome to EverythingAI Home" />
+  
+    {/* Add your home page content here */}
+
     <MainPageBox/>
     <Box sx={{ py:4}}>
       
@@ -40,7 +45,7 @@ const Homepage: React.FC = () => {
       
     </Box>
    
-    </>
+    </div>
   );
 };
 

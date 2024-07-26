@@ -14,7 +14,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import logo from "../assets/EAI.png";
+import logo from "../assets/EverythingAI (1).svg";
 import ContactButton from "./ContactButton";
 
 interface NavButtonProps {
@@ -105,7 +105,7 @@ const NavigationBar: React.FC = () => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h4" component="div" sx={{ marginLeft: "10px" }}>
           <RouterLink to="/">
-            <img src={logo} alt="Logo" style={{ height: "50px", margin: "6px" }} />
+            <img src={logo} alt="Logo" style={{ height: "80px", margin: "6px" }} />
           </RouterLink>
         </Typography>
         {isMobile ? (

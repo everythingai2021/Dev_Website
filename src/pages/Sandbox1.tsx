@@ -1,9 +1,12 @@
-
+import MetaData from "../components/Metadata";
 import { Container, Box} from "@mui/material";
 
 const Sandbox1: React.FC = () => {
 
   return (
+    <div>
+    <MetaData title="OneComplier | SandBox" description="Welcome to EverythingAI Home" />
+  
     <Container sx={{ py: 5 }}>
       <Box sx={{ mb: 5, textAlign: "center" }}>
         <iframe
@@ -17,6 +20,7 @@ const Sandbox1: React.FC = () => {
         ></iframe>
       </Box>
     </Container>
+    </div> 
   );
 };
 

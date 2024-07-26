@@ -3,6 +3,8 @@ import { Box, Typography, Button, useMediaQuery, useTheme } from '@mui/material'
 import ServiceImage1 from "../assets/kids1.jpg";
 import ServiceImage2 from "../assets/kids3.jpg";
 import ServiceImage3 from "../assets/goalsimg.jpg";
+import { Link } from 'react-router-dom';
+
 
 const images = [
   ServiceImage1,
@@ -11,10 +13,12 @@ const images = [
   // Add more image paths as needed
 ];
 
+
 const MainPageBox: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if screen is mobile
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +38,7 @@ const MainPageBox: React.FC = () => {
       width: { xs: '80%', md: '100%' },  // Adjust width here
       height: { xs: 'auto', md: '60vh' },
       margin: '0 auto',
-      backgroundColor: 'white',
+      backgroundColor: '#0097B9',
       padding: 4,
       borderRadius: '10px',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -58,11 +62,18 @@ const MainPageBox: React.FC = () => {
           Join Us
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Become a part of our amazing community. We offer numerous benefits and opportunities for growth. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </Typography>
-        <Button variant="contained" color="primary">
-          Join Us
-        </Button>
+            We understand that every code created removes an inefficiant process in the society. Our mission is to ensure that children and youth have
+            fundamental skills of developing responsible use of artificial intelligence products
+            for diverse and inclusive societies.
+          </Typography>
+           <Button
+              component={Link}
+              to="/program"
+              variant="contained"
+              color="primary"
+            >
+              Join Us
+            </Button>
       </Box>
       {!isMobile && (
         <Box

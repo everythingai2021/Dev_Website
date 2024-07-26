@@ -4,6 +4,7 @@ import BasicModal from "../components/ModalPage";
 import snake from "../assets/snake.jpeg"
 import football from "../assets/football.jpeg"
 import carRace from "../assets/carrace.jpeg"
+import MetaData from "../components/Metadata";
 interface Game {
   title: string;
   description: string;
@@ -51,6 +52,9 @@ const ProjectPage2022: React.FC = () => {
   };
 
   return (
+    <div>
+    <MetaData title="Programs 2022 | SandBox" description="Welcome to EverythingAI Home" />
+  
     <Container sx={{ py: 5 }}>
      
       <Typography variant="h3" component="h1" gutterBottom>
@@ -93,6 +97,7 @@ const ProjectPage2022: React.FC = () => {
         game={selectedGame || undefined}
       />
     </Container>
+    </div>
   );
 };
 

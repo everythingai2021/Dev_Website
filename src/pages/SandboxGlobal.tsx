@@ -1,9 +1,9 @@
 
 import { Container, Grid, Card, CardMedia, CardContent, Typography, CardActionArea } from "@mui/material";
 
-import soccer from "../assets/soccer.jpeg";
-import chess from "../assets/chess.jpeg";
-import baseball from "../assets/baseball.jpeg";
+import soccer from "../assets/oneComplier.jpeg";
+import chess from "../assets/programiz.jpeg";
+import baseball from "../assets/onlinebata.jpeg";
 
 interface Game {
   title: string;
