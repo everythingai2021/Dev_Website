@@ -84,11 +84,7 @@ const ProjectPage2022: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-        <Button variant="contained" color="primary" sx={{ bgcolor: '#247B27' }}>
-          Join Us
-        </Button>
-      </Box>
+      
 
       {/* Modal for displaying game details */}
       <BasicModal
