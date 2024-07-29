@@ -1,16 +1,18 @@
-
-import { Box, Typography, Button, Container } from "@mui/material";
+import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import Sponsor from "../components/ourSponsor";
 import ContactSection from "../components/contactpage";
-import WhatWeDo from "../components/whatwedo";
 import Process from "../components/Process";
 import MetaData from "../components/Metadata";
+import image1 from "../assets/program1.jpg"
+import image2 from "../assets/program3.jpg"
+import image3 from "../assets/kids2.jpg"
+import ImgMediaCard from "../components/Cards";
 const AboutPage: React.FC = () => {
   return (
     <div>
-    <MetaData title="Who we are | SandBox" description="Welcome to EverythingAI Home" />
-  
-      <Container sx={{ mt: 5 }}>
+      <MetaData title="Who We Are | SandBox" description="Learn more about EverythingAI" />
+
+      <Container maxWidth="lg" sx={{ py: 5 }}>
         <Typography
           variant="h4"
           gutterBottom
@@ -19,54 +21,106 @@ const AboutPage: React.FC = () => {
             color: "#1976d2",
             textAlign: "center",
             mb: 4,
-            fontSize: '2rem', // Adjust font size
+            fontSize: { xs: '1.5rem', sm: '2rem' }, // Responsive font size
           }}
         >
           Who We Are
         </Typography>
+
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            bgcolor: "#d0f0c0", // Light green background
-            height: "auto",
+          
+            p: 4,
+            mb: 5,
+            borderRadius: 3,
+            boxShadow: 3,
             textAlign: "center",
-            borderRadius: 2,
-            p: 3,
-            mb: 4,
-            boxShadow: 2, // Added shadow for depth
+            maxWidth: '900px', // Max width for content block
+            mx: 'auto', // Center align content horizontally
           }}
         >
           <Typography
             variant="body1"
             paragraph
             sx={{
-              fontSize: "1.1rem", // Increase font size for better readability
-              lineHeight: 1.6,
-              mb: 3,
-              maxWidth: '800px', // Max width for text block
+              fontSize: { xs: '1rem', sm: '1.2rem' }, // Responsive font size
+              lineHeight: 1.8,
+              mb: 4,
+              color: "#333",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat. Ac auctor augue mauris augue neque. Velit scelerisque in dictum non consectetur a. Arcu ac tortor dignissim convallis aenean et tortor at risus. Integer enim neque volutpat ac tincidunt. Ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus. Orci ac auctor augue mauris augue neque gravida in. Nisl purus in mollis nunc sed id semper. Eget lorem dolor sed viverra ipsum nunc aliquet. Imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Porta lorem mollis aliquam ut porttitor leo.
-            Nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Blandit turpis cursus in hac habitasse platea dictumst quisque. Ut lectus arcu bibendum at varius. Aenean et tortor at risus viverra. Eget mi proin sed libero enim sed faucibus turpis in. Facilisis mauris sit amet massa vitae tortor condimentum lacinia quis. Imperdiet dui accumsan sit amet nulla facilisi morbi. Elit sed vulputate mi sit amet mauris. Ipsum dolor sit amet consectetur adipiscing. Elit eget gravida cum sociis natoque penatibus. A diam maecenas sed enim ut sem viverra aliquet. Vel orci porta non pulvinar neque.   </Typography>
+            At Everything AI, our mission is to empower children and youth with the fundamental skills to responsibly develop and use artificial intelligence, fostering diverse and inclusive societies. We offer programs for ages 7 to 16, ranging from beginner to elite levels, teaching coding in Scratch, Python, web development, app development, and more. We hold regular online meetings every Saturday and provide a supportive community for young coders.
+
+            Join us to make a social impact, as our programs have already engaged 100 students, with 45% being girls, and committed over 6000 hours to coding education. Hear from our students and see how coding can open new avenues for creativity and problem-solving.
+          </Typography>
+
           <Button
             variant="contained"
             color="primary"
             sx={{
-              fontSize: "1rem", // Adjust font size
+              fontSize: { xs: '0.875rem', sm: '1rem' }, // Responsive font size
               px: 4,
-              py: 2,
+              py: 1.5,
               borderRadius: 2,
               mt: 2,
-              boxShadow: 1, // Added shadow for better button appearance
+              boxShadow: 2,
+              textTransform: 'none',
+              backgroundColor: '#7ED957'
             }}
+            onClick={() => window.open("/events")}
           >
             Enter Our Social Event
           </Button>
         </Box>
-        <WhatWeDo />
+
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mb: 5,
+          }}
+        >
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{ fontWeight: "bold", color: "#0097B2", textAlign: 'center' }}
+            >
+            What we Offer?
+          </Typography>
+        </Box>
+         <Grid container item spacing={3} justifyContent="center">
+              <Grid item xs={12} sm={4}>
+              <ImgMediaCard
+                url="program"
+                title="Beginners"
+                description="Ages 7-10 Teach kids to code in simple programs Give kids a basic understanding of code Kids learn Scratch and Python."
+                image={image1}
+              />
+
+              </Grid>
+              <Grid item xs={12} sm={4}>
+              <ImgMediaCard
+                url="program"
+                title="Intermidiate Program"
+                description="Ages 11 – 14 Introduction to Programs such as Python & Scratch Provides understanding of coding to kids"
+                image={image2}
+              />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+              <ImgMediaCard
+                url="/program"
+                title="Elite Program"
+                description="Ages 15+ Web Development App Development Interactive Game Development Security Programs."
+                image={image3}
+              />
+              </Grid>
+          </Grid>
         <Process />
         <ContactSection />
         <Sponsor />

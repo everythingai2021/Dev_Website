@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, useMediaQuery, useTheme } from '@mui/material';
-import ServiceImage1 from "../assets/kids1.jpg";
+import ServiceImage1 from "../assets/program1.jpg";
 import ServiceImage2 from "../assets/kids3.jpg";
-import ServiceImage3 from "../assets/goalsimg.jpg";
+import ServiceImage3 from "../assets/program2.jpg";
+import ServiceImage4 from "../assets/kids1.jpg";
+import ServiceImage5 from "../assets/program3.jpg";
 import { Link } from 'react-router-dom';
-
 
 const images = [
   ServiceImage1,
   ServiceImage2,
   ServiceImage3,
+  ServiceImage4,
+  ServiceImage5,
   // Add more image paths as needed
 ];
-
 
 const MainPageBox: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if screen is mobile
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,21 +31,20 @@ const MainPageBox: React.FC = () => {
 
   return (
     <Box
-    sx={{
-      display: 'flex',
-      flexDirection: { xs: 'column', md: 'row' },
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: { xs: '80%', md: '100%' },  // Adjust width here
-      height: { xs: 'auto', md: '60vh' },
-      margin: '0 auto',
-      backgroundColor: '#0097B9',
-      padding: 4,
-      borderRadius: '10px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    }}
-  >
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '98%',
+        height: { xs: 'auto', md: '60vh' },
+        margin: '0 auto',
     
+        padding: 4,
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      }}
+    >
       <Box
         sx={{
           flex: 1,
@@ -53,7 +53,8 @@ const MainPageBox: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          backgroundColor: "#ffffff",
+          background: "linear-gradient(135deg, #0097B2, #7ED957)",
+          color: '#fff',
           borderRadius: 2,
           mb: { xs: 2, md: 0 }, // Add margin-bottom on mobile
         }}
@@ -62,36 +63,42 @@ const MainPageBox: React.FC = () => {
           Join Us
         </Typography>
         <Typography variant="body1" gutterBottom>
-            We understand that every code created removes an inefficiant process in the society. Our mission is to ensure that children and youth have
-            fundamental skills of developing responsible use of artificial intelligence products
-            for diverse and inclusive societies.
-          </Typography>
-           <Button
-              component={Link}
-              to="/program"
-              variant="contained"
-              color="primary"
-            >
-              Join Us
-            </Button>
-      </Box>
-      {!isMobile && (
-        <Box
+          We understand that every code created removes an inefficient process in society. Our mission is to ensure that children and youth have fundamental skills in developing responsible use of artificial intelligence products for diverse and inclusive societies.
+        </Typography>
+        <Button
+          component={Link}
+          to="/program"
+          variant="contained"
           sx={{
-            flex: 1,
-            padding: 2,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            backgroundColor: '#ffffff',
+            color: '#0097B2',
+            '&:hover': {
+              backgroundColor: '#e0e0e0',
+            }
           }}
         >
-          <img
-            src={images[currentIndex]}
-            alt="Description"
-            style={{ maxWidth: '80%', maxHeight: '80%', borderRadius: '10px' }}
-          />
-        </Box>
-      )}
+          Join Us
+        </Button>
+      </Box>
+      {!isMobile && (
+      <Box
+        sx={{
+          flex: 1,
+          padding: 2,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '95%',
+          height: '100%',
+        }}
+      >
+        <img
+          src={images[currentIndex]}
+          alt="Description"
+          style={{ width: '100%', height: '100%', borderRadius: '10px', objectFit: 'cover' }}
+        />
+      </Box>
+        )}
     </Box>
   );
 };

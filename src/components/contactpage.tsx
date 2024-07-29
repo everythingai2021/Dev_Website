@@ -15,10 +15,7 @@ const SatisfactionGuarantee: React.FC = () => {
           Our Satisfaction is Your Guarantee
         </Typography>
         <Typography variant="body2" sx={{ color: "black" }} paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        We’d love to hear from you! Whether you have questions about our programs, need assistance, or want to get involved, feel free to reach out to us using the information below.
         </Typography>
         <Grid container spacing={2} justifyContent="center">
           <Grid item>
@@ -35,14 +32,14 @@ const SatisfactionGuarantee: React.FC = () => {
                 textTransform: "none",
                 display: "inline-flex",
                 flexShrink: 0,
-                background: "#F0AD01",
+                background: "#0097B2",
                 "&:hover": {
                   backgroundColor: "#fffbf1",
                   color: "black",
                 },
               }}
             >
-              780-607-0170
+              587-708-2595
             </Button>
           </Grid>
           <Grid item>

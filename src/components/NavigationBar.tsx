@@ -16,6 +16,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import logo from "../assets/EverythingAI (1).svg";
 import ContactButton from "./ContactButton";
+import SocialMediaLinks from "./SocialMedia";
 
 interface NavButtonProps {
   to: string;
@@ -34,12 +35,12 @@ const NavButton: React.FC<NavButtonProps> = ({
     component={RouterLink}
     to={to}
     sx={{
-      color: "#247B27",
+      color: "#FFFFFF",
       fontWeight: "bold",
-      fontSize: "1rem",
+      fontSize: "0.875rem",
       textTransform: "none",
       "&:hover": {
-        backgroundColor: "#fffbf1",
+        backgroundColor: "#C9E4E9",
         color: "black",
       },
     }}
@@ -56,6 +57,7 @@ interface NavButtonsProps {
 
 const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
   <>
+    <SocialMediaLinks />
     <NavButton to="/" primary="Home" />
     <NavButton to="/whoweare" primary="Who We Are" />
     <NavButton to="/events" primary="Events" />
@@ -101,9 +103,15 @@ const NavigationBar: React.FC = () => {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "#fff", color: "#247B27" }}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography variant="h4" component="div" sx={{ marginLeft: "10px" }}>
+    <AppBar
+      position="sticky"
+      sx={{
+        background: "linear-gradient(45deg, #0097B2, #7ED957)",
+        color: "#FFFFFF",
+      }}
+    >
+      <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
+        <Typography variant="h4" component="div" sx={{ marginRight: "auto" }}>
           <RouterLink to="/">
             <img src={logo} alt="Logo" style={{ height: "80px", margin: "6px" }} />
           </RouterLink>
@@ -113,6 +121,7 @@ const NavigationBar: React.FC = () => {
             <IconButton color="inherit" aria-label="menu" onClick={toggleDrawer(true)} edge="end">
               <MenuIcon />
             </IconButton>
+           
             <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
               <Box
                 sx={{
@@ -122,6 +131,7 @@ const NavigationBar: React.FC = () => {
                   alignItems: "center",
                   paddingTop: "1rem",
                   marginTop: "28px",
+                  backgroundColor:"lightgreen"
                 }}
                 role="presentation"
                 onClick={toggleDrawer(false)}
@@ -129,13 +139,15 @@ const NavigationBar: React.FC = () => {
               >
                 <NavButtons onMouseEnter={handleServicesHover} />
                 <ContactButton />
+              
               </Box>
             </Drawer>
           </>
         ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: "1.5rem", marginRight: "20px" }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "1rem", marginRight: "20px" }}>
             <NavButtons onMouseEnter={handleServicesHover} />
             <ContactButton />
+         
           </Box>
         )}
       </Toolbar>
@@ -158,12 +170,12 @@ const NavigationBar: React.FC = () => {
           to="/project-2020"
           onClick={handleServicesClose}
           sx={{
-            color: "#247B27",
+            color: "green",
             fontWeight: "bold",
             fontSize: "1rem",
             textTransform: "none",
             "&:hover": {
-              backgroundColor: "rgba(36, 123, 39, 0.08)",
+              backgroundColor: "#C9E4E9",
             },
           }}
         >
@@ -174,12 +186,12 @@ const NavigationBar: React.FC = () => {
           to="/project-2022"
           onClick={handleServicesClose}
           sx={{
-            color: "#247B27",
+            color: "green",
             fontWeight: "bold",
             fontSize: "1rem",
             textTransform: "none",
             "&:hover": {
-              backgroundColor: "rgba(36, 123, 39, 0.08)",
+              backgroundColor: "#C9E4E9",
             },
           }}
         >

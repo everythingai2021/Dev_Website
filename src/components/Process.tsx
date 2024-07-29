@@ -19,7 +19,7 @@ const items = [
 const Process: React.FC = () => {
   return (
     <Box sx={{ flexGrow: 1, padding: 3 }}>
-      <Typography variant="h4" sx={{ marginBottom: 2, textAlign: 'center' }}>How It Works</Typography>
+      <Typography variant="h4" sx={{ marginBottom: 2, textAlign: 'center', color:"#0097B2" }}>How It Works</Typography>
       <Grid container spacing={3}>
         {items.map((item, index) => (
           <Grid item xs={12} sm={4} key={index}>

@@ -30,7 +30,7 @@ const Sponsors: React.FC = () => {
         <Typography
           variant="h5"
           gutterBottom
-          sx={{ fontWeight: "bold", color: "#1976d2", textAlign: 'center' }}
+          sx={{ fontWeight: "bold", color: "#0097B2", textAlign: 'center' }}
         >
           Our Sponsors
         </Typography>

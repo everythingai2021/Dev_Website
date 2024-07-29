@@ -10,46 +10,14 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-  {
-    image: imag,
-    name: 'John Doe',
-    description: 'This is an amazing service! Highly recommend to everyone.',
-  },
-  {
-    image: imag,
-    name: 'Jane Smith',
-    description: 'Fantastic experience, will definitely use again.',
-  },
-  {
-    image: imag,
-    name: 'Sam Wilson',
-    description: 'Great quality and excellent customer service.',
-  },
-  {
-    image: imag,
-    name: 'Lisa Brown',
-    description: 'I am very satisfied with my purchase!',
-  },
-  {
-    image: imag,
-    name: 'Mike Johnson',
-    description: 'Highly professional and reliable.',
-  },
-  {
-    image: imag,
-    name: 'Jadkndkne Smith',
-    description: 'Fantastic experience, will definitely use again.',
-  },
-  {
-    image: imag,
-    name: 'Sdknkdam Wilson',
-    description: 'Great quality and excellent customer service.',
-  },
-  {
-    image: imag,
-    name: 'Lisa Brddddjvjbdown',
-    description: 'I am very satisfied with my purchase!',
-  },
+  { image: imag, name: 'John Doe', description: 'This is an amazing service! Highly recommend to everyone.' },
+  { image: imag, name: 'Jane Smith', description: 'Fantastic experience, will definitely use again.' },
+  { image: imag, name: 'Sam Wilson', description: 'Great quality and excellent customer service.' },
+  { image: imag, name: 'Lisa Brown', description: 'I am very satisfied with my purchase!' },
+  { image: imag, name: 'Mike Johnson', description: 'Highly professional and reliable.' },
+  { image: imag, name: 'Jadkndkne Smith', description: 'Fantastic experience, will definitely use again.' },
+  { image: imag, name: 'Sdknkdam Wilson', description: 'Great quality and excellent customer service.' },
+  { image: imag, name: 'Lisa Brddddjvjbdown', description: 'I am very satisfied with my purchase!' },
   // Add more testimonials as needed
 ];
 
@@ -80,7 +48,7 @@ const TestimonialSection: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 2,
-        backgroundColor: 'whitesmoke',
+        background: 'linear-gradient(to right, #0097B2, #7ED957)', // Gradient background
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         width: '100%',
@@ -89,7 +57,7 @@ const TestimonialSection: React.FC = () => {
       <Typography
         variant="h5"
         gutterBottom
-        sx={{ fontWeight: "bold", color: "#1976d2", textAlign: 'center', mb: 2 }}
+        sx={{ fontWeight: "bold", color: "#fff", textAlign: 'center', mb: 2 }} // Changed text color to white for better contrast
       >
         Our Testimonials
       </Typography>
@@ -120,10 +88,10 @@ const TestimonialSection: React.FC = () => {
                   border: '2px solid white',
                 }}
               />
-              <Typography variant="h6" align="center" gutterBottom sx={{ fontSize: { xs: 'body2', sm: 'h6' } }}>
+              <Typography variant="h6" align="center" gutterBottom sx={{ fontSize: { xs: 'body2', sm: 'h6' }, color: '#fff' }}>
                 {testimonial.name}
               </Typography>
-              <Typography variant="body2" align="center" sx={{ fontSize: { xs: 'body2', sm: 'body1' } }}>
+              <Typography variant="body2" align="center" sx={{ fontSize: { xs: 'body2', sm: 'body1' }, color: '#fff' }}>
                 {testimonial.description}
               </Typography>
             </Box>

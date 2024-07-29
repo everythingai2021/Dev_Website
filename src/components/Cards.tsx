@@ -5,29 +5,46 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ServiceImage2 from "../assets/kids1.jpg";
+import { styled } from '@mui/material/styles';
 
-export default function ImgMediaCard() {
+interface ImgMediaCardProps {
+  url: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+// Styled Card component with hover animation
+const AnimatedCard = styled(Card)(({ theme }) => ({
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'scale(1.05)',
+    boxShadow: theme.shadows[6],
+  },
+}));
+
+const ImgMediaCard: React.FC<ImgMediaCardProps> = ({ url, title, description, image }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <AnimatedCard sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={title}
         height="140"
-        image={ServiceImage2}
+        image={image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={() => window.open(url, '_blank')}>Learn More</Button>
       </CardActions>
-    </Card>
+    </AnimatedCard>
   );
 }
+
+export default ImgMediaCard;

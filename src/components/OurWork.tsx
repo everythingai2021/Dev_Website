@@ -37,7 +37,7 @@ const OurWork: React.FC = () => {
               <Typography
                 variant="h5"
                 gutterBottom
-                sx={{ fontWeight: "bold", color: "green" }}
+                sx={{ fontWeight: "bold", color: "#0097B2" }}
               >
                 Our work makes the world work.
               </Typography>
