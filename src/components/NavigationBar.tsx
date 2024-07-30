@@ -19,10 +19,11 @@ import ContactButton from "./ContactButton";
 import SocialMediaLinks from "./SocialMedia";
 
 interface NavButtonProps {
-  to: string;
+  to?: string;
   primary: string;
   hasDropdown?: boolean;
   onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
+  onClick?: () => void;
 }
 
 const NavButton: React.FC<NavButtonProps> = ({
@@ -30,9 +31,10 @@ const NavButton: React.FC<NavButtonProps> = ({
   primary,
   hasDropdown,
   onMouseEnter,
+  onClick,
 }) => (
   <Button
-    component={RouterLink}
+    component={to ? RouterLink : "button"}
     to={to}
     sx={{
       color: "#FFFFFF",
@@ -45,6 +47,7 @@ const NavButton: React.FC<NavButtonProps> = ({
       },
     }}
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
+    onClick={onClick}
     endIcon={hasDropdown ? <KeyboardArrowDownIcon /> : null}
   >
     {primary}
@@ -53,9 +56,10 @@ const NavButton: React.FC<NavButtonProps> = ({
 
 interface NavButtonsProps {
   onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
+  onSandboxHover?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
+const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter, onSandboxHover }) => (
   <>
     <SocialMediaLinks />
     <NavButton to="/" primary="Home" />
@@ -64,7 +68,7 @@ const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
     <NavButton to="/project" primary="Projects" hasDropdown onMouseEnter={onMouseEnter} />
     <NavButton to="/program" primary="Program" />
     <NavButton to="/careers" primary="Careers" />
-    <NavButton to="/Sandbox" primary="Sandbox - Compiler " />
+    <NavButton primary="Sandbox - Compiler" hasDropdown onMouseEnter={onSandboxHover} />
     <NavButton to="/Contact" primary="Contact" />
   </>
 );
@@ -72,6 +76,7 @@ const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter }) => (
 const NavigationBar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
+  const [sandboxAnchorEl, setSandboxAnchorEl] = useState<null | HTMLElement>(null);
   const isMobile = useMediaQuery("(max-width:600px)");
   const location = useLocation();
 
@@ -98,9 +103,53 @@ const NavigationBar: React.FC = () => {
     }
   };
 
-  const handleServicesClose = (): void => {
-    setServicesAnchorEl(null);
+  const handleSandboxHover = (event: React.MouseEvent<HTMLElement>): void => {
+    if (!isMobile) {
+      setSandboxAnchorEl(event.currentTarget);
+    }
   };
+
+  const handleMenuClose = (): void => {
+    setServicesAnchorEl(null);
+    setSandboxAnchorEl(null);
+  };
+
+  const renderMenu = (anchorEl: HTMLElement | null, menuItems: { to: string; text: string }[]) => (
+    <Menu
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={handleMenuClose}
+      MenuListProps={{ onMouseLeave: handleMenuClose }}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "left",
+      }}
+    >
+      {menuItems.map(({ to, text }) => (
+        <MenuItem
+          key={to}
+          component={RouterLink}
+          to={to}
+          onClick={handleMenuClose}
+          sx={{
+            color: "green",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: "#C9E4E9",
+            },
+          }}
+        >
+          {text}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
 
   return (
     <AppBar
@@ -110,8 +159,8 @@ const NavigationBar: React.FC = () => {
         color: "#FFFFFF",
       }}
     >
-      <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
-        <Typography variant="h4" component="div" sx={{ marginRight: "auto" }}>
+      <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px" }}>
+        <Typography variant="h4" component="div" sx={{ display: "flex", alignItems: "center" }}>
           <RouterLink to="/">
             <img src={logo} alt="Logo" style={{ height: "80px", margin: "6px" }} />
           </RouterLink>
@@ -121,7 +170,6 @@ const NavigationBar: React.FC = () => {
             <IconButton color="inherit" aria-label="menu" onClick={toggleDrawer(true)} edge="end">
               <MenuIcon />
             </IconButton>
-           
             <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
               <Box
                 sx={{
@@ -131,73 +179,33 @@ const NavigationBar: React.FC = () => {
                   alignItems: "center",
                   paddingTop: "1rem",
                   marginTop: "28px",
-                  backgroundColor:"lightgreen"
+                  backgroundColor: "lightgreen",
                 }}
                 role="presentation"
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
               >
-                <NavButtons onMouseEnter={handleServicesHover} />
+                <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
                 <ContactButton />
-              
               </Box>
             </Drawer>
           </>
         ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: "1rem", marginRight: "20px" }}>
-            <NavButtons onMouseEnter={handleServicesHover} />
+          <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
             <ContactButton />
-         
           </Box>
         )}
       </Toolbar>
-      <Menu
-        anchorEl={servicesAnchorEl}
-        open={Boolean(servicesAnchorEl)}
-        onClose={handleServicesClose}
-        MenuListProps={{ onMouseLeave: handleServicesClose }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-      >
-        <MenuItem
-          component={RouterLink}
-          to="/project-2020"
-          onClick={handleServicesClose}
-          sx={{
-            color: "green",
-            fontWeight: "bold",
-            fontSize: "1rem",
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#C9E4E9",
-            },
-          }}
-        >
-          2020 Project Section
-        </MenuItem>
-        <MenuItem
-          component={RouterLink}
-          to="/project-2022"
-          onClick={handleServicesClose}
-          sx={{
-            color: "green",
-            fontWeight: "bold",
-            fontSize: "1rem",
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#C9E4E9",
-            },
-          }}
-        >
-          2022 Project Section
-        </MenuItem>
-      </Menu>
+      {renderMenu(servicesAnchorEl, [
+        { to: "/project-2020", text: "2020 Project Section" },
+        { to: "/project-2022", text: "2022 Project Section" },
+      ])}
+      {renderMenu(sandboxAnchorEl, [
+        { to: "/Sandbox1", text: "OneCompiler" },
+        { to: "/Sandbox2", text: "Programiz" },
+        { to: "/Sandbox3", text: "Online Python Bata" },
+      ])}
     </AppBar>
   );
 };

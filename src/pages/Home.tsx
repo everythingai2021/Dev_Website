@@ -7,9 +7,9 @@ import OurWork from "../components/OurWork";
 import BoxSection from "../components/BoxSection";
 import ImgMediaCard from "../components/Cards";
 import TestimonialSection from "../components/Testimonial";
-import image1 from "../assets/kids1.jpg"
-import image2 from "../assets/kids3.jpg"
-import image3 from "../assets/service.jpg"
+import image1 from "../assets/program1.jpg"
+import image2 from "../assets/program3.jpg"
+import image3 from "../assets/kids2.jpg"
 
 const Homepage: React.FC = () => {
   return (
