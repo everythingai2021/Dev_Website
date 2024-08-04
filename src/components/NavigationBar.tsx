@@ -15,7 +15,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import logo from "../assets/EverythingAI (1).svg";
-import ContactButton from "./ContactButton";
 import SocialMediaLinks from "./SocialMedia";
 
 interface NavButtonProps {
@@ -62,7 +61,7 @@ interface NavButtonsProps {
 const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter, onSandboxHover }) => (
   <>
     <SocialMediaLinks />
-    <NavButton to="/" primary="Home" />
+    
     <NavButton to="/whoweare" primary="Who We Are" />
     <NavButton to="/events" primary="Events" />
     <NavButton to="/project" primary="Projects" hasDropdown onMouseEnter={onMouseEnter} />
@@ -155,7 +154,7 @@ const NavigationBar: React.FC = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: "linear-gradient(45deg, #0097B2, #7ED957)",
+        background: "linear-gradient(45deg, #FFFFFF, #FFFFFF, #AAB0AA, #0097B2)",
         color: "#FFFFFF",
       }}
     >
@@ -186,14 +185,14 @@ const NavigationBar: React.FC = () => {
                 onKeyDown={toggleDrawer(false)}
               >
                 <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
-                <ContactButton />
+               
               </Box>
             </Drawer>
           </>
         ) : (
           <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
-            <ContactButton />
+          
           </Box>
         )}
       </Toolbar>

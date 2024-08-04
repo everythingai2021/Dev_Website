@@ -53,7 +53,7 @@ const MainPageBox: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          background: "linear-gradient(135deg, #0097B2, #7ED957)",
+          background: "linear-gradient(135deg, #0097B2, #0097B2)",
           color: '#fff',
           borderRadius: 2,
           mb: { xs: 2, md: 0 }, // Add margin-bottom on mobile

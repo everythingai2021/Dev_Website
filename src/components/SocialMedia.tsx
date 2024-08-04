@@ -5,9 +5,9 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
+import SchoolIcon from '@mui/icons-material/School';
 import LanguageIcon from "@mui/icons-material/Language";
-
+import HomeIcon from '@mui/icons-material/Home';
 const SocialMediaLinks: React.FC = () => {
   return (
     <Box sx={{ display: "flex", gap: "0.5rem" }}>
@@ -16,7 +16,7 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.linkedin.com/company/everything-ai-coding-association/"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+        color="default"
       >
         <LinkedInIcon />
       </IconButton>
@@ -25,7 +25,7 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.youtube.com/channel/UCe_UvdY56qF7Q3B9AKfzQsQ"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+         color="default"
       >
         <YouTubeIcon />
       </IconButton>
@@ -34,7 +34,7 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.facebook.com/profile.php?id=61562120125882"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+         color="default"
       >
         <FacebookIcon />
       </IconButton>
@@ -43,7 +43,7 @@ const SocialMediaLinks: React.FC = () => {
         href="https://x.com/EverthingAICode"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+         color="default"
       >
         <TwitterIcon />
       </IconButton>
@@ -52,7 +52,7 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.instagram.com/_everything_ai/?hl=en"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+         color="default"
       >
         <InstagramIcon />
       </IconButton>
@@ -61,9 +61,9 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.youtube.com/channel/UCe_UvdY56qF7Q3B9AKfzQsQ"
         target="_blank"
         rel="noopener noreferrer"
-        color="inherit"
+        color="default"
       >
-       
+       <YouTubeIcon/>
       </IconButton>
       <IconButton
         component="a"
@@ -72,7 +72,7 @@ const SocialMediaLinks: React.FC = () => {
         rel="noopener noreferrer"
         color="warning"
       >
-        <LanguageIcon />
+        <SchoolIcon/>
       </IconButton>
       <IconButton
         component="a"
@@ -81,7 +81,7 @@ const SocialMediaLinks: React.FC = () => {
         rel="noopener noreferrer"
         color="success"
       >
-        <LanguageIcon />
+        <HomeIcon />
       </IconButton>
     </Box>
   );
