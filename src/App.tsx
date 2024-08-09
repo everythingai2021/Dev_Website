@@ -19,7 +19,7 @@ import Sandbox3 from "./pages/Sandbox3";
 const App: React.FC = () => {
   return (
     <Router>
-      <>
+
         <NavigationBar />
 
         <Routes>
@@ -38,7 +38,7 @@ const App: React.FC = () => {
         </Routes>
 
         <Footer />
-      </>
+  
     </Router>
   );
 };

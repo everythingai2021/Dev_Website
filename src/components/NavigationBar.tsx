@@ -20,7 +20,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/EverythingAI (1).svg";
 import SocialMediaLinks from "./SocialMedia";
 
@@ -29,17 +29,24 @@ interface NavItemProps {
   primary: string;
   children?: React.ReactNode;
   isMobile: boolean;
+  onClose?: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile }) => {
+const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile, onClose }) => {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (children) {
       setOpen(!open);
       if (!isMobile) {
         setAnchorEl(anchorEl ? null : event.currentTarget);
+      }
+    } else if (to) {
+      navigate(to);
+      if (isMobile && onClose) {
+        onClose();
       }
     }
   };
@@ -53,7 +60,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile }) =>
     <Button
       component={to ? RouterLink : "button"}
       to={to}
-      onClick={children ? handleClick : undefined}
+      onClick={handleClick}
       endIcon={children ? (open ? <ExpandLess /> : <ExpandMore />) : null}
       sx={{
         color: "inherit",
@@ -126,8 +133,9 @@ const NavigationBar: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+  const toggleDrawer = (open: boolean) => (event?: React.KeyboardEvent | React.MouseEvent) => {
     if (
+      event &&
       event.type === "keydown" &&
       ((event as React.KeyboardEvent).key === "Tab" ||
         (event as React.KeyboardEvent).key === "Shift")
@@ -162,7 +170,13 @@ const NavigationBar: React.FC = () => {
 
   const renderNavItems = (items: typeof navItems) => (
     items.map((item, index) => (
-      <NavItem key={index} {...item} isMobile={isMobile}>
+      <NavItem 
+        key={index} 
+        to={item.to} 
+        primary={item.primary} 
+        isMobile={isMobile}
+        onClose={toggleDrawer(false)}
+      >
         {item.children && renderNavItems(item.children)}
       </NavItem>
     ))
@@ -190,7 +204,7 @@ const NavigationBar: React.FC = () => {
             <Drawer
               anchor="right"
               open={drawerOpen}
-              onClose={toggleDrawer(false)}
+             
               sx={{
                 ".MuiDrawer-paper": {
                   width: "280px",
