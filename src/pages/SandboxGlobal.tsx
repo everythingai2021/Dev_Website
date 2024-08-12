@@ -14,20 +14,20 @@ interface Game {
 
 const games: Game[] = [
   {
-    title: "SandBox 1",
-    description: "A classic strategy game played on an 8x8 board.",
+    title: "One Compiler",
+    description: "Write, Run & Share Javascript code online using OneCompiler's JS online compiler for free. It's one of the robust, feature-rich online compilers for Javascript language. Getting started with the OneCompiler's Javascript editor is easy and fast..",
     image: soccer,
     link: "/Sandbox1",
   },
   {
-    title: "Sandbox 2",
-    description: " A classic strategy game played on an 8x8 board.A classic strategy game played on an 8x8 board.",
+    title: "Programiz",
+    description: " Programiz offers beginner-friendly tutorials, examples, and online compilers for various programming languages. You can also access interactive courses, learning paths, and app library to learn coding on the go.",
     image: chess,
     link: "/SandBox2",
   },
   {
-    title: "SandBoox 3",
-    description: "A classic strategy game played on an 8x8 board.",
+    title: "Online Python Bata",
+    description: "Build, run, and share Python code online for free with the help of online-integrated python's development environment (IDE). It is one of the most efficient, dependable, and potent online compilers for the Python programming language.",
     image: baseball,
     link: "/Sandbox3",
   },

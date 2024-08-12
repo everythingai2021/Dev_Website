@@ -10,6 +10,7 @@ import {
     CardActions,
     Box,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 interface CareerPageProps {
     jobs: { title: string; description: string }[];
@@ -17,6 +18,7 @@ interface CareerPageProps {
 
 const CareerPage: React.FC<CareerPageProps> = ({ jobs }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -29,14 +31,13 @@ const CareerPage: React.FC<CareerPageProps> = ({ jobs }) => {
     return (
         <Container>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 4 }}>
-              
                 <TextField
                     fullWidth
                     variant="outlined"
                     label="Search Jobs"
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    sx={{ width: '50%', marginBottom: 2 }}
+                    sx={{ width: { xs: '90%', sm: '70%', md: '50%' }, marginBottom: 2 }}
                 />
                 <Grid container spacing={3} justifyContent="center">
                     {filteredJobs.map((job, index) => (
@@ -51,7 +52,7 @@ const CareerPage: React.FC<CareerPageProps> = ({ jobs }) => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small" color="primary">
+                                    <Button size="small" color="primary" onClick={() => navigate('/volounteer')}>
                                         Apply Now
                                     </Button>
                                     {/* Additional action buttons or links */}

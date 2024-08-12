@@ -69,7 +69,11 @@ const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile, onCl
         textTransform: "none",
         "&:hover": {
           backgroundColor: "#C9E4E9",
-          color: "black",
+          color: "Green",
+          borderBlockWidth:4,
+          borderWidth:4,
+          borderBlockColor:"red",
+          borderColor:"black"
         },
       }}
     >
@@ -103,7 +107,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile, onCl
           open={Boolean(anchorEl)} 
           anchorEl={anchorEl} 
           placement="bottom-start" 
-          style={{ backgroundColor: "white" , width: '70%', left: '0!important', maxWidth: '100%', zIndex: 1300 }}
+          style={{ color: "red" , backgroundColor: "white" , width: '40%', left: '0!important', maxWidth: '100%', zIndex: 1300 }}
         >
           <ClickAwayListener onClickAway={handleClose}>
             <Paper elevation={3} sx={{ width: '100%', mt: 1, backgroundColor: '#C9E4E9' }}>
@@ -160,6 +164,7 @@ const NavigationBar: React.FC = () => {
     {
       primary: "Sandbox - Compiler",
       children: [
+        {to: "/Sandbox", primary: "All Compiler" },
         { to: "/Sandbox1", primary: "OneCompiler" },
         { to: "/Sandbox2", primary: "Programiz" },
         { to: "/Sandbox3", primary: "Online Python Bata" },
