@@ -19,14 +19,14 @@ const images = [
 const MainPageBox: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if screen is mobile
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -36,11 +36,10 @@ const MainPageBox: React.FC = () => {
         flexDirection: { xs: 'column', md: 'row' },
         justifyContent: 'center',
         alignItems: 'center',
-        width: '98%',
+        width: '90%',
         height: { xs: 'auto', md: '60vh' },
         margin: '0 auto',
-    
-        padding: 4,
+        padding: { xs: 2, md: 4 },
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       }}
@@ -49,14 +48,14 @@ const MainPageBox: React.FC = () => {
         sx={{
           flex: 1,
           padding: 2,
-          textAlign: 'center',
+          textAlign: { xs: 'center', md: 'left' },
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          background: "linear-gradient(135deg, #0097B2, #7ED957)",
+          background: "linear-gradient(135deg, #0097B2, #0097B2)",
           color: '#fff',
           borderRadius: 2,
-          mb: { xs: 2, md: 0 }, // Add margin-bottom on mobile
+          mb: { xs: 2, md: 0 },
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -72,33 +71,34 @@ const MainPageBox: React.FC = () => {
           sx={{
             backgroundColor: '#ffffff',
             color: '#0097B2',
+            mt: { xs: 2, md: 4 },
+            alignSelf: { xs: 'center', md: 'flex-start' },
             '&:hover': {
               backgroundColor: '#e0e0e0',
-            }
+            },
           }}
         >
           Join Us
         </Button>
       </Box>
       {!isMobile && (
-      <Box
-        sx={{
-          flex: 1,
-          padding: 2,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '95%',
-          height: '100%',
-        }}
-      >
-        <img
-          src={images[currentIndex]}
-          alt="Description"
-          style={{ width: '100%', height: '100%', borderRadius: '10px', objectFit: 'cover' }}
-        />
-      </Box>
-        )}
+        <Box
+          sx={{
+            flex: 1,
+            padding: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '90%',
+            height: '100%',
+          }}
+        >
+          <img
+            src={images[currentIndex]}
+            alt="Description"
+            style={{ width: '90%', height: '100%', borderRadius: '10px', objectFit: 'cover' }}
+          />
+        </Box>
+      )}
     </Box>
   );
 };

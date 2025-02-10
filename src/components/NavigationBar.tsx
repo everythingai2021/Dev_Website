@@ -8,154 +8,190 @@ import {
   useMediaQuery,
   Drawer,
   Button,
-  Menu,
-  MenuItem,
+  List,
+  ListItem,
+  ListItemText,
+  Collapse,
+  Popper,
+  Paper,
+  ClickAwayListener,
+  Grid,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/EverythingAI (1).svg";
-import ContactButton from "./ContactButton";
 import SocialMediaLinks from "./SocialMedia";
 
-interface NavButtonProps {
+interface NavItemProps {
   to?: string;
   primary: string;
-  hasDropdown?: boolean;
-  onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
-  onClick?: () => void;
+  children?: React.ReactNode;
+  isMobile: boolean;
+  onClose?: () => void;
 }
 
-const NavButton: React.FC<NavButtonProps> = ({
-  to,
-  primary,
-  hasDropdown,
-  onMouseEnter,
-  onClick,
-}) => (
-  <Button
-    component={to ? RouterLink : "button"}
-    to={to}
-    sx={{
-      color: "#FFFFFF",
-      fontWeight: "bold",
-      fontSize: "0.875rem",
-      textTransform: "none",
-      "&:hover": {
-        backgroundColor: "#C9E4E9",
-        color: "black",
-      },
-    }}
-    onMouseEnter={hasDropdown ? onMouseEnter : undefined}
-    onClick={onClick}
-    endIcon={hasDropdown ? <KeyboardArrowDownIcon /> : null}
-  >
-    {primary}
-  </Button>
-);
+const NavItem: React.FC<NavItemProps> = ({ to, primary, children, isMobile, onClose }) => {
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
 
-interface NavButtonsProps {
-  onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
-  onSandboxHover?: (event: React.MouseEvent<HTMLElement>) => void;
-}
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (children) {
+      setOpen(!open);
+      if (!isMobile) {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
+      }
+    } else if (to) {
+      navigate(to);
+      if (isMobile && onClose) {
+        onClose();
+      }
+    }
+  };
 
-const NavButtons: React.FC<NavButtonsProps> = ({ onMouseEnter, onSandboxHover }) => (
-  <>
-    <SocialMediaLinks />
-    <NavButton to="/" primary="Home" />
-    <NavButton to="/whoweare" primary="Who We Are" />
-    <NavButton to="/events" primary="Events" />
-    <NavButton to="/project" primary="Projects" hasDropdown onMouseEnter={onMouseEnter} />
-    <NavButton to="/program" primary="Program" />
-    <NavButton to="/careers" primary="Careers" />
-    <NavButton primary="Sandbox - Compiler" hasDropdown onMouseEnter={onSandboxHover} />
-    <NavButton to="/Contact" primary="Contact" />
-  </>
-);
+  const handleClose = () => {
+    setOpen(false);
+    setAnchorEl(null);
+  };
+
+  const content = (
+    <Button
+      component={to ? RouterLink : "button"}
+      to={to}
+      onClick={handleClick}
+      endIcon={children ? (open ? <ExpandLess /> : <ExpandMore />) : null}
+      sx={{
+        color: "inherit",
+        fontWeight: "bold",
+        fontSize: "0.875rem",
+        textTransform: "none",
+        "&:hover": {
+          backgroundColor: "#C9E4E9",
+          color: "Green",
+          borderBlockWidth:4,
+          borderWidth:4,
+          borderBlockColor:"red",
+          borderColor:"black"
+        },
+      }}
+    >
+      {primary}
+    </Button>
+  );
+
+  if (isMobile) {
+    return (
+      <>
+        <ListItem button onClick={handleClick}>
+          <ListItemText primary={primary} />
+          {children && (open ? <ExpandLess /> : <ExpandMore />)}
+        </ListItem>
+        {children && (
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {children}
+            </List>
+          </Collapse>
+        )}
+      </>
+    );
+  }
+
+  return (
+    <>
+      {content}
+      {children && !isMobile && (
+        <Popper 
+          open={Boolean(anchorEl)} 
+          anchorEl={anchorEl} 
+          placement="bottom-start" 
+          style={{ color: "red" , backgroundColor: "white" , width: '40%', left: '0!important', maxWidth: '100%', zIndex: 1300 }}
+        >
+          <ClickAwayListener onClickAway={handleClose}>
+            <Paper elevation={3} sx={{ width: '100%', mt: 1, backgroundColor: '#C9E4E9' }}>
+              <Box sx={{ p: 2 }}>
+                <Grid container spacing={2}>
+                  {React.Children.map(children, (child, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={index}>
+                      {child}
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </Paper>
+          </ClickAwayListener>
+        </Popper>
+      )}
+    </>
+  );
+};
 
 const NavigationBar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
-  const [sandboxAnchorEl, setSandboxAnchorEl] = useState<null | HTMLElement>(null);
-  const isMobile = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery("(max-width:960px)");
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const toggleDrawer =
-    (open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent): void => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setDrawerOpen(open);
-    };
-
-  const handleServicesHover = (event: React.MouseEvent<HTMLElement>): void => {
-    if (!isMobile) {
-      setServicesAnchorEl(event.currentTarget);
+  const toggleDrawer = (open: boolean) => (event?: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      ((event as React.KeyboardEvent).key === "Tab" ||
+        (event as React.KeyboardEvent).key === "Shift")
+    ) {
+      return;
     }
+    setDrawerOpen(open);
   };
 
-  const handleSandboxHover = (event: React.MouseEvent<HTMLElement>): void => {
-    if (!isMobile) {
-      setSandboxAnchorEl(event.currentTarget);
-    }
-  };
+  const navItems = [
+    { to: "/whoweare", primary: "Who We Are" },
+    { to: "/events", primary: "Events" },
+    {
+      primary: "Projects",
+      children: [
+        { to: "/project-2020", primary: "2020 Project Section" },
+        { to: "/project-2022", primary: "2022 Project Section" },
+      ],
+    },
+    { to: "/program", primary: "Program" },
+    { to: "/careers", primary: "Careers" },
+    {
+      primary: "Sandbox - Compiler",
+      children: [
+        {to: "/Sandbox", primary: "All Compiler" },
+        { to: "/Sandbox1", primary: "OneCompiler" },
+        { to: "/Sandbox2", primary: "Programiz" },
+        { to: "/Sandbox3", primary: "Online Python Bata" },
+      ],
+    },
+    { to: "/Contact", primary: "Contact" },
+  ];
 
-  const handleMenuClose = (): void => {
-    setServicesAnchorEl(null);
-    setSandboxAnchorEl(null);
-  };
-
-  const renderMenu = (anchorEl: HTMLElement | null, menuItems: { to: string; text: string }[]) => (
-    <Menu
-      anchorEl={anchorEl}
-      open={Boolean(anchorEl)}
-      onClose={handleMenuClose}
-      MenuListProps={{ onMouseLeave: handleMenuClose }}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "left",
-      }}
-    >
-      {menuItems.map(({ to, text }) => (
-        <MenuItem
-          key={to}
-          component={RouterLink}
-          to={to}
-          onClick={handleMenuClose}
-          sx={{
-            color: "green",
-            fontWeight: "bold",
-            fontSize: "1rem",
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#C9E4E9",
-            },
-          }}
-        >
-          {text}
-        </MenuItem>
-      ))}
-    </Menu>
+  const renderNavItems = (items: typeof navItems) => (
+    items.map((item, index) => (
+      <NavItem 
+        key={index} 
+        to={item.to} 
+        primary={item.primary} 
+        isMobile={isMobile}
+        onClose={toggleDrawer(false)}
+      >
+        {item.children && renderNavItems(item.children)}
+      </NavItem>
+    ))
   );
 
   return (
     <AppBar
       position="sticky"
       sx={{
-        background: "linear-gradient(45deg, #0097B2, #7ED957)",
+        background: "linear-gradient( #7ED957, #0097B2, #FFFFFF)",
         color: "#FFFFFF",
       }}
     >
@@ -170,42 +206,41 @@ const NavigationBar: React.FC = () => {
             <IconButton color="inherit" aria-label="menu" onClick={toggleDrawer(true)} edge="end">
               <MenuIcon />
             </IconButton>
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+             
+              sx={{
+                ".MuiDrawer-paper": {
+                  width: "280px",
+                  backgroundColor: "#0097B2",
+                  color: "#FFFFFF",
+                },
+              }}
+            >
               <Box
                 sx={{
-                  width: 250,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
+                  width: "100%",
                   paddingTop: "1rem",
-                  marginTop: "28px",
-                  backgroundColor: "lightgreen",
                 }}
                 role="presentation"
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
               >
-                <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
-                <ContactButton />
+                <List>
+                  {renderNavItems(navItems)}
+                </List>
+                <Box sx={{ padding: "1rem" }}>
+                  <SocialMediaLinks />
+                </Box>
               </Box>
             </Drawer>
           </>
         ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <NavButtons onMouseEnter={handleServicesHover} onSandboxHover={handleSandboxHover} />
-            <ContactButton />
+          <Box sx={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+            {renderNavItems(navItems)}
+            <SocialMediaLinks />
           </Box>
         )}
       </Toolbar>
-      {renderMenu(servicesAnchorEl, [
-        { to: "/project-2020", text: "2020 Project Section" },
-        { to: "/project-2022", text: "2022 Project Section" },
-      ])}
-      {renderMenu(sandboxAnchorEl, [
-        { to: "/Sandbox1", text: "OneCompiler" },
-        { to: "/Sandbox2", text: "Programiz" },
-        { to: "/Sandbox3", text: "Online Python Bata" },
-      ])}
     </AppBar>
   );
 };

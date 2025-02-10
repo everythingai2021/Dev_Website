@@ -15,11 +15,13 @@ import SandboxGlobal from "./pages/SandboxGlobal";
 import Sandbox1 from "./pages/Sandbox1";
 import Sandbox2 from "./pages/Sandbox2";
 import Sandbox3 from "./pages/Sandbox3";
+import Volunteer from "./components/Volunteer";
+
 
 const App: React.FC = () => {
   return (
     <Router>
-      <>
+
         <NavigationBar />
 
         <Routes>
@@ -35,10 +37,11 @@ const App: React.FC = () => {
           <Route path="/sandbox1" element={<Sandbox1 />} />
           <Route path="/sandbox2" element={<Sandbox2 />} />
           <Route path="/sandbox3" element={<Sandbox3 />} />
+          <Route path="/volounteer" element={<Volunteer />} />
         </Routes>
 
         <Footer />
-      </>
+  
     </Router>
   );
 };

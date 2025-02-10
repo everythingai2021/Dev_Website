@@ -26,7 +26,7 @@ const AnimatedCard = styled(Card)(({ theme }) => ({
 
 const ImgMediaCard: React.FC<ImgMediaCardProps> = ({ url, title, description, image }) => {
   return (
-    <AnimatedCard sx={{ maxWidth: 345 }}>
+    <AnimatedCard sx={{ width: "100%"}}>
       <CardMedia
         component="img"
         alt={title}

@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
   // Add more testimonials as needed
 ];
 
-const testimonialsToShow = 2; // Number of testimonials to show at a time on mobile
+const testimonialsToShow = 1; // Number of testimonials to show at a time on mobile
 
 const TestimonialSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,22 +48,22 @@ const TestimonialSection: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 2,
-        background: 'linear-gradient(to right, #0097B2, #7ED957)', // Gradient background
+        background: 'linear-gradient(to right, #0097B2, #7ED957)',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '100%',
+        width: '90%',
       }}
     >
       <Typography
         variant="h5"
         gutterBottom
-        sx={{ fontWeight: "bold", color: "#fff", textAlign: 'center', mb: 2 }} // Changed text color to white for better contrast
+        sx={{ fontWeight: "bold", color: "#fff", textAlign: 'center', mb: 2 }}
       >
         Our Testimonials
       </Typography>
 
       <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', overflowX: 'hidden' }}>
-        <IconButton onClick={handlePrevious} sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <IconButton onClick={handlePrevious} sx={{ display: { xs: 'flex', md: 'flex' }, visibility: { xs: currentIndex === 0 ? 'hidden' : 'visible', md: 'visible' } }}>
           <ArrowBackIos />
         </IconButton>
 
@@ -72,7 +72,7 @@ const TestimonialSection: React.FC = () => {
             <Box
               key={index}
               sx={{
-                flex: '0 0 50%', // Adjusted to fit 2 testimonials per slide on mobile
+                flex: '0 0 100%', // Adjusted to fit 1 testimonial per slide on mobile
                 textAlign: 'center',
                 padding: 1,
                 boxSizing: 'border-box',
@@ -98,7 +98,7 @@ const TestimonialSection: React.FC = () => {
           ))}
         </Box>
 
-        <IconButton onClick={handleNext} sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <IconButton onClick={handleNext} sx={{ display: { xs: 'flex', md: 'flex' }, visibility: { xs: currentIndex + testimonialsToShow >= testimonials.length ? 'hidden' : 'visible', md: 'visible' } }}>
           <ArrowForwardIos />
         </IconButton>
       </Box>

@@ -6,13 +6,10 @@ import Sponsor from "../components/ourSponsor";
 import MetaData from "../components/Metadata";
 const jobs = [
     {
-        title: 'Frontend Developer',
-        description: 'Join our team as a frontend developer and work on exciting projects.',
+        title: 'Volunteer opportunity ',
+        description: 'We also offer Volunteering Opportunities as well Volunteer with us and help the community Grow a Nerd.',
     },
-    {
-        title: 'UX Designer',
-        description: 'We are looking for a talented UX designer to improve our user experience.',
-    },
+    
     // Add more job objects as needed
 ];
 

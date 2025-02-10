@@ -46,27 +46,19 @@ const ContactPage: React.FC = () => {
   return (
     <div>
       <MetaData title="Contact | SandBox" description="Welcome to EverythingAI Home" />
-
-      <EachPage
-        Title=""
-        image={page}
-      />
+      <EachPage Title="" image={page} />
       <CssBaseline />
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <Container
-            component="main"
-            maxWidth="md"
-            sx={{ minHeight: "60vh", display: 'flex', alignItems: 'center', justifyContent: 'center', m: 5 }}
-          >
-            <Card elevation={5} sx={{ p: 3, borderRadius: 2 }}>
+      <Container component="main"  sx={{ my: 4, width: '90%', maxWidth: '1200px' }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <Card elevation={5} sx={{ p: 2, borderRadius: 2 }}>
               <CardContent>
                 <Typography
                   variant="h5"
                   sx={{
                     textAlign: "center",
-                    mb: 3,
-                    fontSize: 34,
+                    mb: 2,
+                    fontSize: { xs: '24px', sm: '34px' },
                     fontWeight: 500,
                     color: theme.palette.primary.main,
                     borderBottom: `2px solid ${theme.palette.primary.main}`,
@@ -76,7 +68,7 @@ const ContactPage: React.FC = () => {
                   Contact Us
                 </Typography>
                 <form ref={form} onSubmit={handleSubmitContactForm}>
-                  <Grid container spacing={3}>
+                  <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
                         required
@@ -132,6 +124,7 @@ const ContactPage: React.FC = () => {
                         sx={{
                           backgroundColor: theme.palette.primary.main,
                           "&:hover": { backgroundColor: theme.palette.primary.dark },
+                          py: 1.5,
                         }}
                       >
                         Send Message
@@ -141,23 +134,17 @@ const ContactPage: React.FC = () => {
                 </form>
               </CardContent>
             </Card>
-          </Container>
-        </Grid>
+          </Grid>
 
-        <Grid item xs={12} sm={6}>
-          <Container
-            component="main"
-            maxWidth="md"
-            sx={{ minHeight: "60vh", display: 'flex', alignItems: 'center', justifyContent: 'center', m: 5 }}
-          >
-            <Card elevation={5} sx={{ p: 3, borderRadius: 2 }}>
+          <Grid item xs={12} sm={6}>
+            <Card elevation={5} sx={{ p: 2, borderRadius: 2 }}>
               <CardContent>
                 <Typography
                   variant="h5"
                   sx={{
                     textAlign: "center",
-                    mb: 3,
-                    fontSize: 34,
+                    mb: 2,
+                    fontSize: { xs: '24px', sm: '34px' },
                     fontWeight: 500,
                     color: theme.palette.primary.main,
                     borderBottom: `2px solid ${theme.palette.primary.main}`,
@@ -170,20 +157,21 @@ const ContactPage: React.FC = () => {
                   variant="body1"
                   sx={{
                     textAlign: "center",
-                    mb: 3,
-                    fontSize: 16,
+                    fontSize: { xs: '14px', sm: '16px' },
                     fontWeight: 400,
                   }}
                 >
                   Walkowski Place NW
+                  <br />
                   Edmonton, Alberta
+                  <br />
                   Canada
                 </Typography>
               </CardContent>
             </Card>
-          </Container>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </div>
   );
 };

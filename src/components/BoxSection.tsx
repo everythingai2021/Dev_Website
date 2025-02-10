@@ -6,26 +6,41 @@ const Section = styled(Box)(({ theme }) => ({
   backgroundColor: 'rgba(144, 238, 144, 0.5)', // light green with transparency
   padding: theme.spacing(4),
   display: 'flex',
+  flexDirection: 'row', // default flex direction for larger screens
   alignItems: 'center',
   justifyContent: 'space-between',
   marginBottom: theme.spacing(4),
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column', // change flex direction to column on smaller screens
+  },
 }));
 
 const DescriptionBox = styled(Box)(({ theme }) => ({
   maxWidth: '50%',
   marginRight: theme.spacing(4),
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '100%',
+    marginRight: 0,
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 const ImageCarousel = styled(Box)(({ theme }) => ({
   flex: 1,
   height: '100%',
   maxWidth: '50%',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '100%',
+  },
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#2196f3', // blue color
   color: '#fff',
   marginTop: theme.spacing(2),
+  [theme.breakpoints.down('md')]: {
+    alignSelf: 'center', // center button on smaller screens
+  },
 }));
 
 const BoxSection = () => {
