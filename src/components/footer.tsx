@@ -26,7 +26,7 @@ const Footer = () => {
           
           <Grid item xs={12} sm={3}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              Addres:
+              Address:
             </Typography>
             <Typography variant="body2" color="text.secondary">
                   Walkowski Place NW
@@ -71,10 +71,10 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12} sm={3}>
             <Typography variant="h6" color="text.primary" gutterBottom>
-              Everything Ai 
+              Everything AI 
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              © 2024 Everything Ai. All rights reserved.
+              © 2025 Everything AI. All rights reserved.
             </Typography>
           </Grid>
       </Container>
